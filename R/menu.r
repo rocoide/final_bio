@@ -10,21 +10,25 @@ menu_principal <- function() {
 
         opcion <- readline(prompt = "Selecciona una opción (1-6): ")
 
-        if (opcion == "1") {
-            CIF()
-        } else if (opcion == "2") {
-            PDB()
-        } else if (opcion == "3") {
-            global()
-        } else if (opcion == "4") {
-            local()
-        } else if (opcion == "5") {
-            dotplot()
-        } else if (opcion == "6") {
-            cat("¡Hasta luego!\n")
-            break
-        } else {
-            cat("Opción no válida. Intentá de nuevo.\n")
-        }
+        tryCatch({
+            if (opcion == "1") {
+                CIF()
+            } else if (opcion == "2") {
+                PDB()
+            } else if (opcion == "3") {
+                global()
+            } else if (opcion == "4") {
+                local()
+            } else if (opcion == "5") {
+                dotplot()
+            } else if (opcion == "6") {
+                cat("¡Hasta luego!\n")
+                break
+            } else {
+                cat("Opción no válida. Intentá de nuevo.\n")
+            }
+        }, error = function(e) {
+            cat("⚠️ Error al ejecutar la opción:", conditionMessage(e), "\n")
+        })
     }
 }
