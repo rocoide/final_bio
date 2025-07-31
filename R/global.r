@@ -1,7 +1,7 @@
 global <- function(){
-    # Leer las secuencias desde archivos FASTA
-    seq1 <- readAAStringSet("./1MBN.fasta")[[1]]
-    seq2 <- readAAStringSet("./alpha.faa")[[1]]
+    seq1 <- descargar_y_leer_fasta()
+    invisible(readline(prompt = "Presione Enter para continuar con la segunda proteína..."))
+    seq2 <- descargar_y_leer_fasta()
 
     # Realizar alineamiento global tipo Needleman-Wunsch
     alignment <- pairwiseAlignment(seq1, seq2,

@@ -1,10 +1,9 @@
 dotplot <- function(){
-    secuencias <- readAAStringSet("merge.fasta")
-    window <- 3
+    window <- as.integer(readline(prompt = "Ingrese un tamaño para la ventana: "))
 
-    # Acceder a las dos primeras secuencias
-    rec_one <- secuencias[[1]]
-    rec_two <- secuencias[[2]]
+    rec_one <- descargar_y_leer_fasta()
+    invisible(readline(prompt = "Presione Enter para continuar con la segunda proteína..."))
+    rec_one <- descargar_y_leer_fasta()
 
     # Longitudes de las secuencias
     cat("Longitud de secuencia 1: ", nchar(rec_one), "\n")
