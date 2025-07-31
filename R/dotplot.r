@@ -3,7 +3,7 @@ dotplot <- function(){
 
     rec_one <- descargar_y_leer_fasta()
     invisible(readline(prompt = "Presione Enter para continuar con la segunda proteína..."))
-    rec_one <- descargar_y_leer_fasta()
+    rec_two <- descargar_y_leer_fasta()
 
     # Longitudes de las secuencias
     cat("Longitud de secuencia 1: ", nchar(rec_one), "\n")
@@ -53,12 +53,18 @@ dotplot <- function(){
     if (nrow(dots) > 0) {
         # Crear el gráfico
         grafico <- ggplot(dots, aes(x = x, y = y)) + 
-            geom_point(size = 1) +
+            geom_point(size = 1, color = "#00fc54") +
             scale_y_reverse() +
             labs(title = paste("Dotplot - window =", window),
                 x = "Secuencia 1",
                 y = "Secuencia 2") +
-            theme_minimal()
+            theme_minimal() +
+            theme(
+                axis.title.x = element_text(size = 14, face = "bold", color = "#f0c21b"),
+                axis.title.y = element_text(size = 14, face = "bold", color = "#f0c21b"),
+                axis.text = element_text(size = 12, color = "#cd3030"),
+                plot.title = element_text(size = 16, face = "bold", color = "#fac711", hjust = 0.5)
+            )
 
         # Guardar gráfico como imagen PNG
         archivo_salida <- paste0("dotplot_window_", window, ".png")

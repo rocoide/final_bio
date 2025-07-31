@@ -5,6 +5,8 @@ CIF <- function(){
 
     cif_lines <- readLines(pdb_file)
 
+
+
     cat(cif_lines[1:length(cif_lines)], sep = "\n")
     cat("\nCantidad total de líneas:", length(cif_lines), "\n\n")
 }
